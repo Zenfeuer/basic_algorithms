@@ -13,6 +13,7 @@ def binSearch(list, item):
     # boolean to tell if we found the item
     found = False
 
+    # position where the desired item is located
     positionFound = -1
 
     while first <= last and not found:
@@ -27,6 +28,7 @@ def binSearch(list, item):
             # if it is found, we notify it through found variable
             found = True
 
+            # save the item's position
             positionFound = middle
         else:
 
@@ -45,7 +47,7 @@ def binSearch(list, item):
     # return if item is found and the position where it is located
     return found, positionFound
 
-
+# Testcases
 print(binSearch([1, 4, 6, 9, 11, 17, 89, 91, 105], 17))
 print(binSearch([1, 4, 6, 9, 11, 17, 89, 91, 105], 1))
 print(binSearch([1, 4, 6, 9, 11, 17, 89, 91, 105], 88))
