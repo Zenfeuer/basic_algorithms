@@ -4,9 +4,9 @@ public interface IPokemon
 
 	public void sound(String pokemonSound);
 
-	public void sleep(int sleepingTime);
+	public void sleep(int sleepingTime) throws InterruptedException;
 
-	public void confused(int confusedTime);
+	public void confused(int confusedTime) throws InterruptedException;
 
 	public void faint();
 
