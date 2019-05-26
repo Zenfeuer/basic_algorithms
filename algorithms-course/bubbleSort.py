@@ -1,5 +1,5 @@
 # Homework: Bubble Sort Algorithm
-# Complexity: O(n(n-1)/2) = O(n^2)
+# Complexity: O(n(n-1)/2) => O(n^2)
 
 # list: array of numbers (unsorted)
 # isAsc: desired order. True: ascending | False: descending
