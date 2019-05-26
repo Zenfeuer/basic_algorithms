@@ -29,19 +29,56 @@ public class Pokemon extends PokemonBase
 
 	public void fight(Pokemon enemy)
 	{
+		System.out.println(this.getName() + " vs " + enemy.getName());
+
 		Random randomizer = new Random(System.nanoTime());
 		int rounds = randomizer.nextInt(5) + 5;
+		int attackIndex;
 
 		boolean isMyTurn = true;
+		String winner = "";
 
 		while (rounds > 0)
 		{
 			if (isMyTurn)
 			{
-				
+				attackIndex = randomizer.nextInt(this.attacks.size()-1);
+				this.attack(this.attacks.get(attackIndex));
+				enemy.getAttacked(randomizer.nextInt(100) + 1, this.type);
+
+				if (enemy.fainted)
+				{
+					winner = this.getName();
+					break;
+				}
+			}
+			else
+			{
+				attackIndex = randomizer.nextInt(enemy.attacks.size()-1);
+				enemy.attack(enemy.attacks.get(attackIndex));
+				this.getAttacked(randomizer.nextInt(100) + 1, enemy.type);
+
+				if (this.fainted)
+				{
+					winner = enemy.getName();
+					break;
+				}
 			}
 
+			isMyTurn = !isMyTurn;
+			rounds--;
 		}
+
+		if (!winner.isEmpty())
+		{
+			System.out.println("The winner is: " +  winner);
+		}
+		else
+		{
+			System.out.println("Tie!");
+		}
+
+		System.out.println("Fight finished!");
 	}
 
 	public void getAttacked(int damage, String enemyType)
