@@ -1,4 +1,5 @@
 # Binary Search Algorithm
+# Complexity: O(log n)
 
 # list: array of numbers (ordered)
 # item: element to be found
