@@ -1,6 +1,6 @@
 public interface IPokemon
 {
-	public void attack(String attackName);
+	public void attack(String attackName, int damage);
 
 	public void sound(String pokemonSound);
 

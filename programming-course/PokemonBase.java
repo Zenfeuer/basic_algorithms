@@ -27,19 +27,22 @@ public abstract class PokemonBase implements IPokemon
 
 		if (health <= 0)
 		{
+			health = 0;
 			fainted = true;
 			faint();
 		}
+
+		System.out.println(getName() + " health: " + health);
 	}
 
 	// Methods
-	public void attack(String attackName)
+	public void attack(String attackName, int damage)
 	{
 		if (!attacks.isEmpty())
 		{
 			if (attacks.contains(attackName))
 			{
-				System.out.println(getName() + " has used " + attackName);
+				System.out.println(getName() + " has used " + attackName + ". [Estimated dmg: " + damage + "]");
 			}
 			else
 			{

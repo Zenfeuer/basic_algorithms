@@ -37,6 +37,27 @@ class Main
 		ArrayList<String> fireResistantTo = new ArrayList<String>(Arrays.asList("Bug", "Steel", "Fire", "Grass", "Ice"));
 		ArrayList<String> fireVulnerableTo = new ArrayList<String>(Arrays.asList("Ground", "Rock", "Water"));
 
-		System.out.println("Hello World!");
+		Pokemon pikachu = new Pokemon("Pikachu", "", "Electric", 250, 
+									electricAttacks, electricStrongAgainst, 
+									electricWeakAgainst, electricResistantTo, 
+									electricVulnerableTo);
+
+		Pokemon bulbasaur = new Pokemon("Bulbasaur", "", "Grass", 210, 
+									grassAttacks, grassStrongAgainst, 
+									grassWeakAgainst, grassResistantTo, 
+									grassVulnerableTo);
+
+		Pokemon blastoise = new Pokemon("Blastoise", "", "Water", 400, 
+									waterAttacks, waterStrongAgainst, 
+									waterWeakAgainst, waterResistantTo, 
+									waterVulnerableTo);
+
+		Pokemon charizard = new Pokemon("Charizard", "Firetaker", "Fire", 420, 
+									fireAttacks, fireStrongAgainst, 
+									fireWeakAgainst, fireResistantTo, 
+									fireVulnerableTo);
+
+		charizard.fight(blastoise);
+		pikachu.fight(bulbasaur);
 	}
 }

@@ -29,22 +29,34 @@ public class Pokemon extends PokemonBase
 
 	public void fight(Pokemon enemy)
 	{
-		System.out.println(this.getName() + " vs " + enemy.getName());
+		System.out.println("-------------------------------------------------------");
+		System.out.println();
+
+		System.out.println("Match: " + this.getName() + " vs " + enemy.getName());
+		System.out.println();
 
 		Random randomizer = new Random(System.nanoTime());
-		int rounds = randomizer.nextInt(5) + 5;
+		int rounds = randomizer.nextInt(10) + 10;
 		int attackIndex;
+		int damage;
 
 		boolean isMyTurn = true;
 		String winner = "";
 
 		while (rounds > 0)
 		{
+			damage = randomizer.nextInt(150) + 1;
+
 			if (isMyTurn)
 			{
+				System.out.println();
+				System.out.println(">" + this.getName() + " turn:");
+				System.out.println();
+
 				attackIndex = randomizer.nextInt(this.attacks.size()-1);
-				this.attack(this.attacks.get(attackIndex));
-				enemy.getAttacked(randomizer.nextInt(100) + 1, this.type);
+
+				this.attack(this.attacks.get(attackIndex), damage);
+				enemy.getAttacked(damage, this.type);
 
 				if (enemy.fainted)
 				{
@@ -54,9 +66,14 @@ public class Pokemon extends PokemonBase
 			}
 			else
 			{
+				System.out.println();
+				System.out.println(">" + enemy.getName() + " turn:");
+				System.out.println();
+
 				attackIndex = randomizer.nextInt(enemy.attacks.size()-1);
-				enemy.attack(enemy.attacks.get(attackIndex));
-				this.getAttacked(randomizer.nextInt(100) + 1, enemy.type);
+
+				enemy.attack(enemy.attacks.get(attackIndex), damage);
+				this.getAttacked(damage, enemy.type);
 
 				if (this.fainted)
 				{
@@ -71,14 +88,19 @@ public class Pokemon extends PokemonBase
 
 		if (!winner.isEmpty())
 		{
-			System.out.println("The winner is: " +  winner);
+			System.out.println();
+			System.out.println("THE WINNER IS: " +  winner);
 		}
 		else
 		{
-			System.out.println("Tie!");
+			System.out.println();
+			System.out.println("TIE!");
 		}
 
 		System.out.println("Fight finished!");
+		System.out.println();
+		System.out.println("-------------------------------------------------------");
+		System.out.println();
 	}
 
 	public void getAttacked(int damage, String enemyType)
@@ -93,7 +115,7 @@ public class Pokemon extends PokemonBase
 		}
 		else if (vulnerableTo.contains(enemyType))
 		{
-			trueDamage = 5 + randomizer.nextInt(damage);
+			trueDamage = 5 + randomizer.nextInt(damage*2);
 			System.out.println(getName() + " has been attacked. It is effective. Loses " + trueDamage + " HP.");
 		}
 		else
@@ -102,6 +124,6 @@ public class Pokemon extends PokemonBase
 			System.out.println(getName() + " has been attacked. Loses " + trueDamage + " HP.");
 		}
 
-		reduceHealth(damage);
+		reduceHealth(trueDamage);
 	}
 }
