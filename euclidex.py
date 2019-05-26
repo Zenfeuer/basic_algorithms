@@ -18,7 +18,9 @@ MCD = euclidexRecursive(49, 35)
 print(MCD[2])
 print("---------------------------------------------------")
 
-# Homework: Extend Euclides Algorithm (Iterative version)
+
+
+# Homework: Extend Euclides Algorithm (iterative version)
 def euclidexIterative(a, b):
 
     # iterates until it is found the base case
@@ -28,14 +30,14 @@ def euclidexIterative(a, b):
         tmp = b
 
         # calculates the next value of b (Tn) depending on current values
-        # Tn = Sn-1 - Qn * Tn-1
+        # Tn = Sn-1 - Qn * Tn-1, where Qn = Tn-1/Sn-1
         b = a - a//b * b
 
         # for the next iteration, now a is b (Sn = Tn-1)
         a = tmp
     
     # return b because when it is found the base case, in the previous iteration
-    # b contains the GCD (greates common divisor)
+    # b contains the GCD (greatest common divisor)
     return b
 
 # Test cases
