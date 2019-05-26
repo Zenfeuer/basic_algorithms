@@ -8,14 +8,14 @@ def euclidexRecursive(a, b):
 
 # Test cases
 print("---------------- Recursive Version ----------------")
-MCD = euclidexRecursive(102, 18)
-print(MCD[2])
-MCD = euclidexRecursive(2, 1)
-print(MCD[2])
-MCD = euclidexRecursive(333, 33)
-print(MCD[2])
-MCD = euclidexRecursive(49, 35)
-print(MCD[2])
+a,b,GCD = euclidexRecursive(102, 18)
+print("GCD(%s,%s)=%s | Bezout's coefficients: (%s,%s)" % (102, 18, GCD, a, b))
+a,b,GCD = euclidexRecursive(2, 1)
+print("GCD(%s,%s)=%s | Bezout's coefficients: (%s,%s)" % (2, 1, GCD, a, b))
+a,b,GCD = euclidexRecursive(333, 33)
+print("GCD(%s,%s)=%s | Bezout's coefficients: (%s,%s)" % (333, 33, GCD, a, b))
+a,b,GCD = euclidexRecursive(49, 35)
+print("GCD(%s,%s)=%s | Bezout's coefficients: (%s,%s)" % (49, 35, GCD, a, b))
 print("---------------------------------------------------")
 
 
@@ -42,12 +42,12 @@ def euclidexIterative(a, b):
 
 # Test cases
 print("---------------- Iterative Version ----------------")
-MCD = euclidexIterative(102, 18)
-print(MCD)
-MCD = euclidexIterative(2, 1)
-print(MCD)
-MCD = euclidexIterative(333, 33)
-print(MCD)
-MCD = euclidexIterative(49, 35)
-print(MCD)
+GCD = euclidexIterative(102, 18)
+print(GCD)
+GCD = euclidexIterative(2, 1)
+print(GCD)
+GCD = euclidexIterative(333, 33)
+print(GCD)
+GCD = euclidexIterative(49, 35)
+print(GCD)
 print("---------------------------------------------------")
