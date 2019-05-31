@@ -1,4 +1,8 @@
+import random
+import time
+import sys
 
+sys.setrecursionlimit(5000)
 
 def insertSort(list):
     for index in range(1, len(list)):
@@ -15,11 +19,24 @@ def insertSort(list):
     
     return list
 
-print([3, 5, 1, 9, 2, 67, 11, 6, 99, 12])
-print(insertSort([3, 5, 1, 9, 2, 67, 11, 6, 99, 12]))
-print([99, 1])
-print(insertSort([99, 1]))
-print([1, 2, 3, 4, 5, 6, 7, 8, 9])
-print(insertSort([1, 2, 3, 4, 5, 6, 7, 8, 9]))
-print([2, 2, 2, 2, 2, 1, 1, 1, 1, 1])
-print(insertSort([2, 2, 2, 2, 2, 1, 1, 1, 1, 1]))
+cases = [2, 5, 10, 20, 25, 50, 75, 100, 200, 250, 500, 750, 1000, 1250, 1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+
+results = []
+
+for case in range(0, len(cases)):
+
+    arr = []
+
+    for i in range(0, cases[case]):
+
+        arr.append(random.randrange(500))
+    
+
+    now = time.monotonic()
+    insertSort(arr)
+    end = time.monotonic()
+
+    results.append(end-now)
+
+
+print(results)
