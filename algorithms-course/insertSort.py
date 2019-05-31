@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import random
 import time
 import sys
@@ -40,3 +41,8 @@ for case in range(0, len(cases)):
 
 
 print(results)
+
+plt.plot(cases, results)
+plt.ylabel('time (seconds)')
+plt.xlabel('n')
+plt.show()
