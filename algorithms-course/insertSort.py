@@ -1,3 +1,5 @@
+
+
 def insertSort(list):
     for index in range(1, len(list)):
         value = list[index]
