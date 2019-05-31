@@ -39,10 +39,9 @@ for case in range(0, len(cases)):
 
     results.append(end-now)
 
-
-print(results)
-
 plt.plot(cases, results)
+plt.axis([0, 10000, 0, 2.5])
+plt.title('Insert Sort')
 plt.ylabel('time (seconds)')
 plt.xlabel('n')
 plt.show()

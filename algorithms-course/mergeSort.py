@@ -57,6 +57,8 @@ for case in range(0, len(cases)):
     results.append(end-now)
 
 plt.plot(cases, results)
+plt.axis([0, 10000, 0, 0.02])
+plt.title('Merge Sort')
 plt.ylabel('time (seconds)')
 plt.xlabel('n')
 plt.show()
