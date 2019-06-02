@@ -3,6 +3,10 @@
 
 # list: array of numbers (ordered)
 # item: element to be found
+#
+# returns found, positionFound
+# found: if item exists in the array
+# positionFound: item's position, -1 if not found
 def binSearch(list, item):
 
     # inferior bound
@@ -57,4 +61,3 @@ def binSearch(list, item):
 print(binSearch([1, 4, 6, 9, 11, 17, 89, 91, 105], 17))
 print(binSearch([1, 4, 6, 9, 11, 17, 89, 91, 105], 1))
 print(binSearch([1, 4, 6, 9, 11, 17, 89, 91, 105], 88))
-
