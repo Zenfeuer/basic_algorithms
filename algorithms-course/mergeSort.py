@@ -5,9 +5,18 @@ import sys
 
 sys.setrecursionlimit(5000)
 
+# merge method to unify two arrays into one
+#
+# l and ar are sorted arrays
 def merge(l, r):
+
+    # Gets the length of the given arrays
     nl = len(l); nr = len(r)
+
+    # indexes to iterate over the arrays
     i = j = 0
+
+    # final array
     a = []
 
     while i < nl and j < nr:
