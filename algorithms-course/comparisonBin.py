@@ -5,6 +5,63 @@ import sys
 
 sys.setrecursionlimit(5000)
 
+# increase the stack depth limit to allow deep recursions
+sys.setrecursionlimit(5000)
+
+# merge method to unify two arrays into one
+#
+# l and r are sorted arrays
+def merge(l, r):
+
+    # Gets the length of the given arrays
+    nl = len(l); nr = len(r)
+
+    # indexes to iterate over the arrays
+    i = j = 0
+
+    # final array
+    a = []
+
+    while i < nl and j < nr:
+
+        # if the i-th element in l is lesser or equals to the
+        # j-th element in r, that means that elements in l are
+        # still minor than the ones in r
+        if l[i] <= r[j]:
+            a.append(l[i])
+            i = i + 1
+
+        # if not, then the elements in r must be filled the
+        # final array to be returned
+        else:
+            a.append(r[j])
+            j = j + 1
+    
+    # fill with the remaining elements of l
+    while i < nl:
+        a.append(l[i])
+        i = i + 1
+
+    # fill with the remaining elements of r
+    while j < nr:
+        a.append(r[j])
+        j = j + 1
+
+    return a
+    
+# recursive algorithm to apply merge sort approach
+# complexity: O(nlog(n))
+def mergeSort(a):
+
+    # base case
+    if len(a) == 1:
+        return a
+    else:
+        # this split the array into two arrays until the base case
+        # it is reached. after, the arrays are merged with the
+        # merge() method
+        return merge(mergeSort(a[0:len(a)//2]), mergeSort(a[len(a)//2:len(a)]))
+
 def binSearch(list, item):
 
     # inferior bound
@@ -106,11 +163,13 @@ for case in range(0, len(cases)):
     item = 10000
 
     now = time.monotonic()
+    arr = mergeSort(arr)
     binSearch(arr, item)
     end = time.monotonic()
     resultsIterative.append(end-now)
 
     now = time.monotonic()
+    arr = mergeSort(arr)
     binSearchRecursive(arr, item, 0, len(arr)-1)
     end = time.monotonic()
     resultsRecursive.append(end-now)
@@ -142,10 +201,10 @@ for k in range(0, len(cases)):
 
 
 plt.plot(cases, resultsIterative, 'r', cases, resultsRecursive, 'g')
-plt.axis([0, 10000, 0, 6e-6])
+plt.axis([0, 10000, 0, 2.5e-4])
 plt.title('Time Analysis')
 plt.ylabel('time (seconds)')
 plt.xlabel('n')
-plt.text(7900, 5e-6, 'iterative', style='italic', color='green')
-plt.text(8100, 5.5e-6, 'recursive', style='italic', color='red')
+plt.text(8300, 1.4e-4, 'recursive', style='italic', color='green')
+plt.text(7800, 2e-4, 'iterative', style='italic', color='red')
 plt.show()

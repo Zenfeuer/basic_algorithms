@@ -48,6 +48,7 @@ def merge(l, r):
     return a
     
 # recursive algorithm to apply merge sort approach
+# complexity: O(nlog(n))
 def mergeSort(a):
 
     # base case
@@ -65,7 +66,7 @@ cases = [2, 5, 10, 20, 25, 50, 75, 100, 200, 250, 500, 750, 1000, 1250, 1500, 20
 # it stores the execution time for each testcase
 results = []
 
-#  evaluates the testcases
+# evaluates the testcases
 for case in range(0, len(cases)):
 
     # array of elements depening on testcase
