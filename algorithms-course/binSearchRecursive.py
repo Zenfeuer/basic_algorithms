@@ -1,4 +1,4 @@
-#Homework: Binary Search Algorithm (Recursive Approach)
+# Homework: Binary Search Algorithm (Recursive Approach)
 #
 # list: array of numbers (ordered)
 # item: element to be found
