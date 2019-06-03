@@ -14,19 +14,20 @@ def binSearchRecursive(list, item, first, last):
     # current  values of first and last
     middle = (first + last)//2
 
-    # base case: it verifies if item is located in middle position
-    if list[middle] == item:
-
-        # if it is found, returns that it is found and the position
-        return True, middle
-    
     # base case: first and last are the boundaries of the search 
     # scope on each recursion level. If first surpass last index,
     # then the item does not exist in the list.
-    elif first > last:
+    if first > last:
 
         # returns not found
         return False, -1
+
+    # base case: it verifies if item is located in middle position
+    elif list[middle] == item:
+
+        # if it is found, returns that it is found and the position
+        return True, middle
+
     else:
         # if it is not found, it must update the current bound values
 

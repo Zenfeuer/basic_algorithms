@@ -1,79 +1,44 @@
+import matplotlib.pyplot as plt
+import random
 import time
 import sys
 
+# increase the stack depth limit to allow deep recursions
 sys.setrecursionlimit(5000)
 
+# Pascal Triangle's Algorithm
+#
+# Given n, k, it determines the binomial coefficient 
+# in the Pascal Triangle
+#
+# returns the coefficient depending on given n, k
 def pascal(n, k):
+
+    # Base case
     if n == 0 or k == 0 or n == k:
         return 1
+    
+    # According to the recurrent expression, it calls 
+    # recursively until it gets base case
     return pascal(n-1, k) + pascal(n-1, k-1)
 
-now = time.monotonic()
-pascal(5, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (5, end-now))
+# testcases
+cases = [2, 5, 10, 20, 25, 50, 75, 100, 200, 250, 500, 750, 1000, 1250]
 
-now = time.monotonic()
-pascal(10, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (10, end-now))
+# it stores the execution time for each testcase
+results = []
 
-now = time.monotonic()
-pascal(25, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (20, end-now))
+#  evaluates the testcases
+for case in range(0, len(cases)):
+    now = time.monotonic()
+    pascal(cases[case], 3)
+    end = time.monotonic()
+    results.append(end-now)
 
-now = time.monotonic()
-pascal(50, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (50, end-now))
-
-now = time.monotonic()
-pascal(75, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (75, end-now))
-
-now = time.monotonic()
-pascal(100, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (100, end-now))
-
-now = time.monotonic()
-pascal(150, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (150, end-now))
-
-now = time.monotonic()
-pascal(250, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (250, end-now))
-
-now = time.monotonic()
-pascal(500, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (500, end-now))
-
-now = time.monotonic()
-pascal(750, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (750, end-now))
-
-now = time.monotonic()
-pascal(1000, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (1000, end-now))
-
-now = time.monotonic()
-pascal(1250, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (1250, end-now))
-
-now = time.monotonic()
-pascal(1500, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (1500, end-now))
-
-now = time.monotonic()
-pascal(2000, 3)
-end = time.monotonic()
-print("n=%s, Execution Time: %s seconds" % (2000, end-now))
+# plots the graphics/chart to analize the results
+plt.plot(cases, results, 'r')
+plt.axis([0, 1250, 0, 75])
+plt.title('Time Analysis')
+plt.ylabel('time (seconds)')
+plt.xlabel('n')
+plt.show()
